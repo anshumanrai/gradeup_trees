@@ -40,6 +40,89 @@ class BTTree {
 
 	}
 
+	public String search(String s) {
+
+
+		String retVal = "";
+
+		if (r == null) {
+
+			return retVal;
+
+		}
+
+		else {
+
+			boolean foundPos = false;
+
+			BTNode cn = r;	
+
+			while (!foundPos) {
+
+				String cs = cn.v;	
+
+				int ccr = s.compareTo(cs);
+
+				if (ccr == 0) {
+
+					retVal = s;
+	
+					foundPos = true;
+
+				}
+
+				else {
+
+					if (ccr < 0) {
+
+						if (cn.lc == null) {
+	
+							foundPos = true;
+
+							System.out.println("Did not find the string " + s);
+
+						}
+
+						else {
+
+							cn = cn.lc;
+
+						}
+
+					}
+
+
+
+					else {
+
+						if (cn.rc == null) {
+	
+							foundPos = true;
+
+							System.out.println("Did not find the string " + s);
+
+						}
+
+						else {
+
+							cn = cn.rc;
+
+						}
+
+					}
+
+
+				}
+
+			}
+
+		}
+
+		return retVal;
+
+
+	}
+
 	public void insert(String s) {
 
 		if (r == null) {
@@ -250,6 +333,14 @@ class BT {
 
 	}
 
+	public String search(String s) {
+
+		String retVal = btt.search(s);
+
+		return retVal;
+
+	}
+
 	public void printBinaryTree() {
 
 		System.out.println("Printing Binary Tree");
@@ -322,6 +413,48 @@ public class BinaryTree {
 		bt.printBinaryTree();
 
 		System.out.println("Running BinaryTree");
+
+		String searchString = "Icecream";
+
+		System.out.println("Searching string " + searchString);
+
+		String searchResult = bt.search(searchString);
+
+		int cv = searchResult.compareTo(searchString);
+
+		if (cv == 0) {
+
+			System.out.println("Found search string " + searchString);
+
+		}
+
+		else {
+
+			System.out.println("Could not find string  " + searchString); 
+
+		}
+
+		searchString = "Cookie";
+
+		System.out.println("Searching string " + searchString);
+
+		searchResult = bt.search(searchString);
+
+		cv = searchResult.compareTo(searchString);
+
+		if (cv == 0) {
+
+			System.out.println("Found search string " + searchString);
+
+		}
+
+		else {
+
+			System.out.println("Could not find string  " + searchString); 
+
+		}
+
+
 
 		return;
 
