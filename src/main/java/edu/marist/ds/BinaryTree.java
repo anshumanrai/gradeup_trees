@@ -313,6 +313,53 @@ class BT {
 
 	BTTree btt;
 
+	public BTTree delete(String delvar) {
+
+		ArrayList<String> currInpStrings = new ArrayList<String>();
+
+		int iss = inpStrings.size();
+
+		int i;
+
+		for(i=0;i<iss;i++) {
+
+			String cs = inpStrings.get(i);
+
+			if (!cs.equals(delvar)) {
+
+				currInpStrings.add(cs);
+				
+			}
+
+		}
+
+		BTTree cbtt = createBinaryTreeFromList(currInpStrings);
+
+		return cbtt;
+
+
+	}
+
+	public BTTree createBinaryTreeFromList(ArrayList<String> sa) {
+
+		BTTree cbtt = new BTTree();
+
+		int sas = sa.size();
+
+		int i;
+		
+		for(i=0;i<sas;i++) {
+
+			String cs = sa.get(i);
+
+			cbtt.insert(cs);
+
+		}	
+
+		return cbtt;
+
+	}
+
 	public void createBinaryTree() {
 
 		btt = new BTTree();
@@ -331,7 +378,7 @@ class BT {
 
 		return;
 
-	}
+	} 
 
 	public String search(String s) {
 
@@ -454,7 +501,15 @@ public class BinaryTree {
 
 		}
 
+		String delString = "Soap";
 
+		System.out.println("Deleting string " + delString);
+
+		BTTree dt = bt.delete(delString);
+
+		System.out.println("Tree after deletion of " + delString);
+
+		System.out.println(dt.toString());
 
 		return;
 
