@@ -90,6 +90,8 @@ class BTTree {
 
 							cn.lc = new BTNode(s);
 
+							System.out.println("Inserting " + s + " in left tree of " + cn.v);
+
 						}
 
 						else {
@@ -109,6 +111,8 @@ class BTTree {
 							foundPos = true;
 
 							cn.rc = new BTNode(s);
+
+							System.out.println("Inserting " + s + " in right tree of " + cn.v);
 
 						}
 
@@ -130,6 +134,88 @@ class BTTree {
 		}	
 
 		return;
+
+	}
+
+	public String toString() {
+
+		String retVal = "";
+
+		if (r==null) {
+			
+			return retVal;
+		}
+
+		else {
+
+			ArrayList currLevelNodes = new ArrayList<BTNode>();
+
+			ArrayList nextLevelNodes;
+
+			retVal = retVal + r.v + "\n";
+
+			if (!(r.lc == null)) {
+				
+				currLevelNodes.add(r.lc);
+
+			}
+
+			if (!(r.rc == null)) {
+				
+				currLevelNodes.add(r.rc);
+
+			}
+
+			int clns = currLevelNodes.size();
+
+			BTNode cn;
+
+			while (clns > 0) {
+
+				int i;
+
+				for(i=0;i<(clns-1);i++) {
+
+					cn = (BTNode)currLevelNodes.get(i);
+
+					retVal = retVal + cn.v + " , ";
+
+				}
+
+				cn = (BTNode)currLevelNodes.get(i);
+
+				retVal = retVal + cn.v + "\n";
+
+				nextLevelNodes = new ArrayList<BTNode>();
+
+				for(i=0;i<clns;i++) {
+
+					cn = (BTNode)currLevelNodes.get(i);
+
+					if (!(cn.lc == null)) {
+
+						nextLevelNodes.add(cn.lc);
+
+					}
+
+					if (!(cn.rc == null)) {
+
+						nextLevelNodes.add(cn.rc);
+
+					}
+
+				}
+
+				currLevelNodes = nextLevelNodes;
+
+				clns = currLevelNodes.size();
+
+
+			}
+
+		}
+
+		return retVal;
 
 	}
 
@@ -165,6 +251,10 @@ class BT {
 	}
 
 	public void printBinaryTree() {
+
+		System.out.println("Printing Binary Tree");
+
+		System.out.println(btt.toString());
 
 		return;
 
