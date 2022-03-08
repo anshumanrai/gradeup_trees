@@ -2,4 +2,4 @@
 
 mvn compile -f pomBinaryTree.xml
 
-mvn exec:java -f pomBinaryTree.xml -Dexec.args="data/input0.txt"
+mvn exec:java -f pomBinaryTree.xml -Dexec.args="data/inputBinaryTree.txt"
