@@ -4,15 +4,15 @@ import java.io.*;
 import java.util.ArrayList;
 
 
-class BTNode {
+class AVLBTNode {
 
 	String v;
 
-	BTNode lc;
+	AVLBTNode lc;
 
-	BTNode rc;
+	AVLBTNode rc;
 
-	public BTNode (String iv) {
+	public AVLBTNode (String iv) {
 
 		v = new String(iv);
 
@@ -28,11 +28,11 @@ class BTNode {
 }
 
 
-class BTTree {
+class AVLBTTree {
 
-	BTNode r;
+	AVLBTNode r;
 
-	public BTTree() {
+	public AVLBTTree() {
 
 		r = null;
 
@@ -55,7 +55,7 @@ class BTTree {
 
 			boolean foundPos = false;
 
-			BTNode cn = r;	
+			AVLBTNode cn = r;	
 
 			while (!foundPos) {
 
@@ -127,7 +127,7 @@ class BTTree {
 
 		if (r == null) {
 
-			r = new BTNode(s);
+			r = new AVLBTNode(s);
 
 		}
 
@@ -135,7 +135,7 @@ class BTTree {
 
 			boolean foundPos = false;
 
-			BTNode cn = r;
+			AVLBTNode cn = r;
 
 
 			while (!foundPos) {
@@ -150,7 +150,7 @@ class BTTree {
 	
 						foundPos = true;
 
-						cn.lc = new BTNode(s);
+						cn.lc = new AVLBTNode(s);
 
 					}
 
@@ -171,7 +171,7 @@ class BTTree {
 	
 							foundPos = true;
 
-							cn.lc = new BTNode(s);
+							cn.lc = new AVLBTNode(s);
 
 							System.out.println("Inserting " + s + " in left tree of " + cn.v);
 
@@ -193,7 +193,7 @@ class BTTree {
 	
 							foundPos = true;
 
-							cn.rc = new BTNode(s);
+							cn.rc = new AVLBTNode(s);
 
 							System.out.println("Inserting " + s + " in right tree of " + cn.v);
 
@@ -231,7 +231,7 @@ class BTTree {
 
 		else {
 
-			ArrayList currLevelNodes = new ArrayList<BTNode>();
+			ArrayList currLevelNodes = new ArrayList<AVLBTNode>();
 
 			ArrayList nextLevelNodes;
 
@@ -251,7 +251,7 @@ class BTTree {
 
 			int clns = currLevelNodes.size();
 
-			BTNode cn;
+			AVLBTNode cn;
 
 			while (clns > 0) {
 
@@ -259,21 +259,21 @@ class BTTree {
 
 				for(i=0;i<(clns-1);i++) {
 
-					cn = (BTNode)currLevelNodes.get(i);
+					cn = (AVLBTNode)currLevelNodes.get(i);
 
 					retVal = retVal + cn.v + " , ";
 
 				}
 
-				cn = (BTNode)currLevelNodes.get(i);
+				cn = (AVLBTNode)currLevelNodes.get(i);
 
 				retVal = retVal + cn.v + "\n";
 
-				nextLevelNodes = new ArrayList<BTNode>();
+				nextLevelNodes = new ArrayList<AVLBTNode>();
 
 				for(i=0;i<clns;i++) {
 
-					cn = (BTNode)currLevelNodes.get(i);
+					cn = (AVLBTNode)currLevelNodes.get(i);
 
 					if (!(cn.lc == null)) {
 
@@ -305,15 +305,15 @@ class BTTree {
 }
 
 
-class BT {
+class AVLBT {
 
 	String inpFileName;
 
 	ArrayList<String> inpStrings;
 
-	BTTree btt;
+	AVLBTTree btt;
 
-	public BTTree delete(String delvar) {
+	public AVLBTTree delete(String delvar) {
 
 		ArrayList<String> currInpStrings = new ArrayList<String>();
 
@@ -333,16 +333,16 @@ class BT {
 
 		}
 
-		BTTree cbtt = createBinaryTreeFromList(currInpStrings);
+		AVLBTTree cbtt = createBinaryTreeFromList(currInpStrings);
 
 		return cbtt;
 
 
 	}
 
-	public BTTree createBinaryTreeFromList(ArrayList<String> sa) {
+	public AVLBTTree createBinaryTreeFromList(ArrayList<String> sa) {
 
-		BTTree cbtt = new BTTree();
+		AVLBTTree cbtt = new AVLBTTree();
 
 		int sas = sa.size();
 
@@ -362,7 +362,7 @@ class BT {
 
 	public void createBinaryTree() {
 
-		btt = new BTTree();
+		btt = new AVLBTTree();
 
 		int iss = inpStrings.size();
 
@@ -432,13 +432,13 @@ class BT {
 
 	}	
 
-	public BT(String inInpFileName) {
+	public AVLBT(String inInpFileName) {
 
 		inpFileName = inInpFileName;
 
 		inpStrings = new ArrayList<String>();
 
-		System.out.println("BT: inpFileName : " + inpFileName);
+		System.out.println("AVLBT: inpFileName : " + inpFileName);
 
 		return;
 
@@ -447,11 +447,11 @@ class BT {
 
 }
 
-public class BinaryTree {
+public class AVLTree {
 
 	public static void main (String args[]) {
 
-		BT bt = new BT(args[0]);
+		AVLBT bt = new AVLBT(args[0]);
 
 		bt.readInputFile();
 
@@ -505,7 +505,7 @@ public class BinaryTree {
 
 		System.out.println("Deleting string " + delString);
 
-		BTTree dt = bt.delete(delString);
+		AVLBTTree dt = bt.delete(delString);
 
 		System.out.println("Tree after deletion of " + delString);
 
