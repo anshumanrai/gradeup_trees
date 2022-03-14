@@ -28,17 +28,17 @@ class AVLBTNode {
 
 	}
  
-    public int getHeight(AVLBTNode n )  
+    public static int getHeight(AVLBTNode n )  
     {  
         return n == null ? -1 : n.h;  
     }  
           
-    public int getMaxHeight(int lnh, int rnh)  
+    public static int getMaxHeight(int lnh, int rnh)  
     {  
     	return lnh > rnh ? lnh : rnh;  
     }  
 
-    public AVLBTNode insertString(String s, AVLBTNode n)  
+    public static AVLBTNode insertString(String s, AVLBTNode n)  
     {  
         //check whether the node is null or not  
         if (n == null) 
@@ -48,7 +48,7 @@ class AVLBTNode {
         //insert a node in case when the given element is lesser than the element of the root node  
         else {
 			
-			int sv = s.compareTo(v);
+			int sv = s.compareTo(n.v);
 
 			if (sv < 0)  
             {  
@@ -95,25 +95,25 @@ class AVLBTNode {
               
     }  
 
-	AVLBTNode rotateWithLeftChild( AVLBTNode n) {
+	public static AVLBTNode rotateWithLeftChild( AVLBTNode n) {
 
 		return n;
 
 	}
 
-	AVLBTNode doubleWithLeftChild (AVLBTNode n) {
+	public static AVLBTNode doubleWithLeftChild (AVLBTNode n) {
 
 		return n;
 
 	}
 
-	AVLBTNode rotateWithRightChild (AVLBTNode n) {
+	public static AVLBTNode rotateWithRightChild (AVLBTNode n) {
 
 		return n;
 
 	}
 
-	AVLBTNode doubleWithRightChild (AVLBTNode n) {
+	public static AVLBTNode doubleWithRightChild (AVLBTNode n) {
 
 		return n;
 
@@ -449,7 +449,9 @@ class AVLBT {
 
 			String cs = sa.get(i);
 
-			cbtt.insert(cs);
+			//cbtt.insert(cs);
+
+			AVLBTNode.insertString(cs, cbtt.r);
 
 		}	
 
@@ -469,7 +471,9 @@ class AVLBT {
 
 			String cs = inpStrings.get(i);
 
-			btt.insert(cs);
+			AVLBTNode.insertString(cs, btt.r);
+			
+			//btt.insert(cs);
 
 		}	
 
