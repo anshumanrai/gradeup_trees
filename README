@@ -10,3 +10,7 @@ In order to run the binary tree do the following
 In order to run the AVL Tree do the following
 
 ./runPomAVLTree.sh
+
+In order to run the NAryTree do the following
+
+./runNAryTree.sh
