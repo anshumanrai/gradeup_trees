@@ -12,6 +12,8 @@ class AVLBTNode {
 
 	AVLBTNode rc;
 
+	int h;
+
 	public AVLBTNode (String iv) {
 
 		v = new String(iv);
@@ -20,7 +22,100 @@ class AVLBTNode {
 		
 		rc = null;
 
+		h = 0;
+
 		return;
+
+	}
+ 
+    public int getHeight(AVLBTNode n )  
+    {  
+        return n == null ? -1 : n.h;  
+    }  
+          
+    public int getMaxHeight(int lnh, int rnh)  
+    {  
+    	return lnh > rnh ? lnh : rnh;  
+    }  
+
+    public AVLBTNode insertString(String s, AVLBTNode n)  
+    {  
+        //check whether the node is null or not  
+        if (n == null) 
+		{ 
+            n = new AVLBTNode(s);
+		}  
+        //insert a node in case when the given element is lesser than the element of the root node  
+        else {
+			
+			int sv = s.compareTo(v);
+
+			if (sv < 0)  
+            {  
+                n.lc = insertString( s, n.lc );  
+                if( getHeight( n.lc) - getHeight( n.rc ) == 2 ) 
+				{
+					int slcv = s.compareTo(n.lc.v);
+                    if( slcv < 0 )
+					{  
+                        n = rotateWithLeftChild( n ); 
+					} 
+                    else
+					{  
+                        n = doubleWithLeftChild( n ); 
+					} 
+				}
+			
+			}
+
+            else {
+				if( sv > 0 )  
+            	{  
+                	n.rc = insertString( s, n.rc );  
+                	if( getHeight( n.rc ) - getHeight( n.lc ) == 2 ) 
+					{
+						int srcv = s.compareTo(n.rc.v); 
+                    	if( srcv > 0) 
+						{ 
+                        	n = rotateWithRightChild( n ); 
+						} 
+                    	else
+						{ 
+                        	n = doubleWithRightChild( n );
+						}  
+
+					}
+            	}  
+			}
+		}
+
+        n.h = getMaxHeight( getHeight( n.lc ), getHeight( n.rc ) ) + 1;  
+              
+        return n;  
+              
+    }  
+
+	AVLBTNode rotateWithLeftChild( AVLBTNode n) {
+
+		return n;
+
+	}
+
+	AVLBTNode doubleWithLeftChild (AVLBTNode n) {
+
+		return n;
+
+	}
+
+	AVLBTNode rotateWithRightChild (AVLBTNode n) {
+
+		return n;
+
+	}
+
+	AVLBTNode doubleWithRightChild (AVLBTNode n) {
+
+		return n;
 
 	}
 	
@@ -122,6 +217,8 @@ class AVLBTTree {
 
 
 	}
+
+	
 
 	public void insert(String s) {
 
