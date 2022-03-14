@@ -40,10 +40,15 @@ class AVLBTNode {
 
     public static AVLBTNode insertString(String s, AVLBTNode n)  
     {  
+
+		AVLBTNode retVal;
+
         //check whether the node is null or not  
         if (n == null) 
 		{ 
-            n = new AVLBTNode(s);
+			retVal = new AVLBTNode(s);
+
+            n = retVal;
 		}  
         //insert a node in case when the given element is lesser than the element of the root node  
         else {
