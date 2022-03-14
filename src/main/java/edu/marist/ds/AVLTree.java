@@ -451,7 +451,7 @@ class AVLBT {
 
 			//cbtt.insert(cs);
 
-			AVLBTNode.insertString(cs, cbtt.r);
+			cbtt.r = AVLBTNode.insertString(cs, cbtt.r);
 
 		}	
 
@@ -471,7 +471,7 @@ class AVLBT {
 
 			String cs = inpStrings.get(i);
 
-			AVLBTNode.insertString(cs, btt.r);
+			btt.r = AVLBTNode.insertString(cs, btt.r);
 			
 			//btt.insert(cs);
 
