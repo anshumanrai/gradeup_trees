@@ -1,2 +1,12 @@
 This is a repository that contains the grade up implementation of 
 the following tree - binary, AVL and n-ary
+
+
+In order to run the binary tree do the following
+
+./runPomBinaryTree.sh
+
+
+In order to run the AVL Tree do the following
+
+./runPomAVLTree.sh
