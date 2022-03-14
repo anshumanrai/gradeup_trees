@@ -12,6 +12,8 @@ class AVLBTNode {
 
 	AVLBTNode rc;
 
+	int h;
+
 	public AVLBTNode (String iv) {
 
 		v = new String(iv);
@@ -20,9 +22,21 @@ class AVLBTNode {
 		
 		rc = null;
 
+		h = 0;
+
 		return;
 
 	}
+ 
+    private int getHeight(AVLBTNode n )  
+    {  
+        return n == null ? -1 : n.h;  
+    }  
+          
+    private int getMaxHeight(int lnh, int rnh)  
+    {  
+    	return lnh > rnh ? lnh : rnh;  
+    }  
 	
 
 }
