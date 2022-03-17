@@ -40,10 +40,15 @@ class AVLBTNode {
 
     public static AVLBTNode insertString(String s, AVLBTNode n)  
     {  
+
+		AVLBTNode retVal;
+
         //check whether the node is null or not  
         if (n == null) 
 		{ 
-            n = new AVLBTNode(s);
+			retVal = new AVLBTNode(s);
+
+            n = retVal;
 		}  
         //insert a node in case when the given element is lesser than the element of the root node  
         else {
@@ -93,7 +98,42 @@ class AVLBTNode {
               
         return n;  
               
+    } 
+
+
+    public static AVLBTNode rotateWithLeftChild(AVLBTNode node2)  
+    {  
+        AVLBTNode node1 = node2.lc;  
+        node2.lc = node1.rc;  
+        node1.rc = node2;  
+        node2.h = getMaxHeight( getHeight( node2.lc ), getHeight( node2.rc ) ) + 1;  
+        node1.h = getMaxHeight( getHeight( node1.lc ), node2.h ) + 1;  
+        return node1;  
     }  
+      
+    public static AVLBTNode rotateWithRightChild(AVLBTNode node1)  
+    {  
+        AVLBTNode node2 = node1.rc;  
+        node1.rc = node2.lc;  
+        node2.lc = node1;  
+        node1.h = getMaxHeight( getHeight( node1.lc ), getHeight( node1.rc ) ) + 1;  
+        node2.h = getMaxHeight( getHeight( node2.rc ), node1.h ) + 1;  
+        return node2;  
+    }  
+      
+    public static AVLBTNode doubleWithLeftChild(AVLBTNode node3)  
+    {  
+        node3.lc = rotateWithRightChild( node3.lc );  
+        return rotateWithLeftChild( node3 );  
+    }  
+      
+    public static AVLBTNode doubleWithRightChild(AVLBTNode node1)  
+    {  
+        node1.rc = rotateWithLeftChild( node1.rc );  
+        return rotateWithRightChild( node1 );  
+    }       
+
+	/*
 
 	public static AVLBTNode rotateWithLeftChild( AVLBTNode n) {
 
@@ -119,6 +159,7 @@ class AVLBTNode {
 
 	}
 	
+	*/
 
 }
 
